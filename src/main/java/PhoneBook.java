@@ -8,7 +8,7 @@ public class PhoneBook {
         return 0;
     }
 
-    public String findByNumbers(){
+    public String findByNumbers(int number){
         return null;
     }
 

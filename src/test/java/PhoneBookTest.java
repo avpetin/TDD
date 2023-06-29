@@ -1,7 +1,11 @@
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
+import org.junit.jupiter.params.provider.Arguments;
+import org.junit.jupiter.params.provider.MethodSource;
 import org.mockito.ArgumentCaptor;
 import org.mockito.Mockito;
+
+import java.util.stream.Stream;
 
 import static org.mockito.Mockito.verify;
 
@@ -10,18 +14,25 @@ public class PhoneBookTest {
     @Test
     public void testAds(){
         //arrange
-/*        PhoneBook phoneBook = Mockito.mock(PhoneBook.class);
-        Mockito.when(phoneBook.add(Mockito.anyString(), Mockito.anyInt()))
-                .thenReturn(0);
-        ArgumentCaptor<String> argumentCaptor = ArgumentCaptor.forClass(String.class);
-        verify(phoneBook).add(Mockito.anyString(), Mockito.anyInt());*/
-
-        //arrange
         int expected = 1, result;
         //act
         sut.add(Mockito.anyString(), Mockito.anyInt());
         result = sut.getPhonebookSize();
         //assert
         Assertions.assertEquals(expected, result);
+    }
+
+    @Test
+    @MethodSource("addSourceNumber")
+    public void testFindByNumber(int number, String expected){
+        var result = sut.findByNumbers(number);
+        //assert
+        Assertions.assertEquals(expected, result);
+    }
+
+    public static Stream<Arguments> addSourceNumber() {
+        return Stream.of(
+                Arguments.of(Mockito.anyInt())
+        );
     }
 }
