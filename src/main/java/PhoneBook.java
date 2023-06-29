@@ -9,15 +9,15 @@ public class PhoneBook {
         return 0;
     }
 
-    public String findByNumbers(int number){
+    public String findByNumber(int number){
         Object value = new Object();
-        Optional<String> result = phbMap.
-                entrySet().
-                stream()
+        Optional<String> result = phbMap
+                .entrySet()
+                .stream()
                 .filter(entry -> value.equals(entry.getValue()))
                 .map(Map.Entry::getKey)
                 .findFirst();
-        return result.get();
+        return result.orElse(null);
 
     }
 

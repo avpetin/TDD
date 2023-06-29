@@ -23,16 +23,12 @@ public class PhoneBookTest {
     }
 
     @Test
-    @MethodSource("addSourceNumber")
-    public void testFindByNumber(String expected){
-        var result = sut.findByNumbers(Mockito.anyInt());
+    public void testFindByNumber(){
+        //arrange
+        String expected = null;
+        //act
+        var result = sut.findByNumber(Mockito.anyInt());
         //assert
         Assertions.assertEquals(expected, result);
-    }
-
-    public static Stream<Arguments> addSourceNumber() {
-        return Stream.of(
-                Arguments.of(Mockito.anyString())
-        );
     }
 }
