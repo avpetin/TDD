@@ -21,6 +21,12 @@ public class PhoneBook {
 
     }
 
+    public int findByName(String name){
+        Optional<Integer> result = Optional.ofNullable(phbMap
+                .get(name));
+        return result.orElse(0);
+    }
+
     public Integer getPhonebookSize(){
         return phbMap.size();
     }

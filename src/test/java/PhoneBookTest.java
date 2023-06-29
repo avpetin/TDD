@@ -31,4 +31,16 @@ public class PhoneBookTest {
         //assert
         Assertions.assertEquals(expected, result);
     }
+
+    @Test
+    public void testFindByName(){
+        //arrange
+        int expected = Mockito.anyInt();
+        //act
+        var result = sut.findByName(Mockito.anyString());
+        //assert
+        Assertions.assertEquals(expected, result);
+    }
+
+
 }
