@@ -24,15 +24,15 @@ public class PhoneBookTest {
 
     @Test
     @MethodSource("addSourceNumber")
-    public void testFindByNumber(int number, String expected){
-        var result = sut.findByNumbers(number);
+    public void testFindByNumber(String expected){
+        var result = sut.findByNumbers(Mockito.anyInt());
         //assert
         Assertions.assertEquals(expected, result);
     }
 
     public static Stream<Arguments> addSourceNumber() {
         return Stream.of(
-                Arguments.of(Mockito.anyInt())
+                Arguments.of(Mockito.anyString())
         );
     }
 }
