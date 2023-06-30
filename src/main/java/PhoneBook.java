@@ -28,7 +28,11 @@ public class PhoneBook {
     }
 
     public void printAllNames(){
-
+        phbMap
+        .entrySet()
+        .stream()
+        .sorted()
+        .forEach(System.out::println);
     }
 
     public Integer getPhonebookSize(){

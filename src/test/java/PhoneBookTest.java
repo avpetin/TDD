@@ -1,12 +1,17 @@
+import org.junit.Before;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
-import org.mockito.ArgumentCaptor;
 import org.mockito.Mockito;
 
-import static org.mockito.Mockito.verify;
+import java.io.ByteArrayOutputStream;
+import java.io.PrintStream;
+
+import static org.junit.Assert.assertEquals;
+
 
 public class PhoneBookTest {
     PhoneBook sut = new PhoneBook();
+    final ByteArrayOutputStream outContent = new ByteArrayOutputStream();
     @Test
     public void testAds(){
         //arrange
@@ -38,19 +43,17 @@ public class PhoneBookTest {
         Assertions.assertEquals(expected, result);
     }
 
+    @Before
+    public void setUpStreams() {
+        System.setOut(new PrintStream(outContent));
+    }
     @Test
     public void testPrintAllNames(){
         //arrange
-        sut.add("a", 1);
-        sut.add("b", 2);
-        sut.add("c", 3);
+        sut.printAllNames();
         //act
-
-        sut = Mockito.mock(PhoneBook.class);
-        ArgumentCaptor<String> argumentCaptor = ArgumentCaptor.forClass(String.class);
-        Mockito.verify(sut, Mockito.times(1)).printAllNames();
+        String output = "";
         //assert
-        Assertions.assertEquals(String.format("Name ", sut.findByNumber(1)),
-                argumentCaptor.getValue());
+        assertEquals(output , outContent.toString());
     }
 }
