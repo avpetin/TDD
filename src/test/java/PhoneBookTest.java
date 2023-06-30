@@ -44,8 +44,6 @@ public class PhoneBookTest {
         sut.add("a", 1);
         sut.add("b", 2);
         sut.add("c", 3);
-
-        String expected = "a";
         //act
 
         sut = Mockito.mock(PhoneBook.class);
