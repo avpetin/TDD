@@ -52,7 +52,7 @@ public class PhoneBookTest {
         ArgumentCaptor<String> argumentCaptor = ArgumentCaptor.forClass(String.class);
         Mockito.verify(sut, Mockito.times(1)).printAllNames();
         //assert
-        Assertions.assertEquals(String.format("Warning, patient with id: %s, need help", sut.findByNumber(1)),
+        Assertions.assertEquals(String.format("Name ", sut.findByNumber(1)),
                 argumentCaptor.getValue());
     }
 }
