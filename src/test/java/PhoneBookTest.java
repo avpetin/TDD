@@ -1,11 +1,7 @@
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
-import org.junit.jupiter.params.provider.Arguments;
-import org.junit.jupiter.params.provider.MethodSource;
 import org.mockito.ArgumentCaptor;
 import org.mockito.Mockito;
-
-import java.util.stream.Stream;
 
 import static org.mockito.Mockito.verify;
 
@@ -42,5 +38,21 @@ public class PhoneBookTest {
         Assertions.assertEquals(expected, result);
     }
 
+    @Test
+    public void testPrintAllNames(){
+        //arrange
+        sut.add("a", 1);
+        sut.add("b", 2);
+        sut.add("c", 3);
 
+        String expected = "a";
+        //act
+
+        sut = Mockito.mock(PhoneBook.class);
+        ArgumentCaptor<String> argumentCaptor = ArgumentCaptor.forClass(String.class);
+        Mockito.verify(sut, Mockito.times(1)).printAllNames();
+        //assert
+        Assertions.assertEquals(String.format("Warning, patient with id: %s, need help", sut.findByNumber(1)),
+                argumentCaptor.getValue());
+    }
 }

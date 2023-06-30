@@ -27,6 +27,10 @@ public class PhoneBook {
         return result.orElse(0);
     }
 
+    public void printAllNames(){
+
+    }
+
     public Integer getPhonebookSize(){
         return phbMap.size();
     }
